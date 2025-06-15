@@ -82,7 +82,7 @@ bool FileMap_SaveRawBinaryToFile(const char* restrict const filename, const void
  * NOTICE: The filemap needs to be manually freed after it is not used, else will cause MEMORY LEAK
  * Use FileMap_Free function to free the filemap
  */
-uint8_t* FileMap_CreateFromFile(const char* restrict const filename, size_t* restrict const out_size) {
+void* FileMap_CreateFromFile(const char* restrict const filename, size_t* restrict const out_size) {
     HANDLE file = CreateFileA(filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     if (file == INVALID_HANDLE_VALUE) return NULL;
 
@@ -98,5 +98,5 @@ uint8_t* FileMap_CreateFromFile(const char* restrict const filename, size_t* res
     CloseHandle(file);
 
     *out_size = size;
-    return (uint8_t*)data;
+    return data;
 }

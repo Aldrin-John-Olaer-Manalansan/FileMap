@@ -21,7 +21,7 @@
 #include <windows.h>
 
 bool FileMap_SaveRawBinaryToFile(const char* restrict const filename, const void* restrict data, size_t size);
-uint8_t* FileMap_CreateFromFile(const char* restrict const filename, size_t* restrict const out_size);
+void* FileMap_CreateFromFile(const char* restrict const filename, size_t* restrict const out_size);
 
 /* Frees the data's filemap from memory
  * Specify a pointer to data contained by a filemap (for example: data created by FileMap_CreateFromFile function)
